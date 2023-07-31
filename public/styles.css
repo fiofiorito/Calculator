@@ -63,9 +63,10 @@ p {
 
 .reset-button {
     background-color: #8C9DC0;
-    width: 3.25rem;
-    aspect-ratio: 1/1;
+    font-size: 1.25rem;
+    height: 3.25rem;
     border-radius: 10px;
     display: grid;
     align-items: center;
+    grid-column: span 2;
 }

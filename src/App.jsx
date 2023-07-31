@@ -4,30 +4,39 @@ import { Operator, ResetButton } from './components/button';
 import Screen from './components/screen';
 import '../public/styles.css';
 
-const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
-const operators = ["+", "-", "x", "÷"];
-
-function numButton() {
-  numbers.forEach(() => {
-    return <Button character={numbers.number} />
-  })
-};
-
-function opButton() {
-  operators.forEach(() => {
-    return <Operator character={operators.operator} />
-  })
-
-};
-
+const buttonsData = [
+  { type: "button", character: "1" },
+  { type: "button", character: "2" },
+  { type: "button", character: "3" },
+  { type: "operator", character: "+" },
+  { type: "button", character: "4" },
+  { type: "button", character: "5" },
+  { type: "button", character: "6" },
+  { type: "operator", character: "-" },
+  { type: "button", character: "7" },
+  { type: "button", character: "8" },
+  { type: "button", character: "9" },
+  { type: "operator", character: "x" },
+  { type: "reset", character: "Reset" },
+  { type: "button", character: "0" },
+  { type: "operator", character: "÷" }
+]
 
 function App() {
   return <div className='layout-div'>
     <Screen result="Here" />
     <div className='calculator-div'>
-      {numbers.map(numButton)}
-      {operators.map(opButton)}
-
+      {buttonsData.map((button, index) => {
+        switch (button.type) {
+          case "button":
+            return <Button key={index} character={button.character} />
+          case "operator":
+            return <Operator key={index} character={button.character} />
+          case "reset":
+            return <ResetButton key={index} character={button.character} />
+          default: return null;
+        }
+      })}
     </div>
   </div>
 }
