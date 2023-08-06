@@ -5,6 +5,7 @@ import { Operator, ResetButton } from './components/Button';
 import Screen from './components/Screen';
 import './style.css'
 import { create, all } from "mathjs";
+import Footer from "./components/Footer";
 
 const math = create(all);
 const buttonsData = [
@@ -60,21 +61,24 @@ function App() {
     }
   }, [inputExpression]);
 
-  return <div className='layout-div'>
-    <Screen expression={inputExpression} result={result} />
-    <div className='calculator-div'>
-      {buttonsData.map((button, index) => {
-        switch (button.type) {
-          case "button":
-            return <Button onButtonPress={handleButtonPress} key={index} character={button.character} />
-          case "operator":
-            return <Operator onButtonPress={handleButtonPress} key={index} character={button.character} />
-          case "reset":
-            return <ResetButton onButtonPress={handleButtonPress} key={index} character={button.character} />
-          default: return null;
-        }
-      })}
+  return <div className="mom-div">
+    <div className='layout-div'>
+      <Screen expression={inputExpression} result={result} />
+      <div className='calculator-div'>
+        {buttonsData.map((button, index) => {
+          switch (button.type) {
+            case "button":
+              return <Button onButtonPress={handleButtonPress} key={index} character={button.character} />
+            case "operator":
+              return <Operator onButtonPress={handleButtonPress} key={index} character={button.character} />
+            case "reset":
+              return <ResetButton onButtonPress={handleButtonPress} key={index} character={button.character} />
+            default: return null;
+          }
+        })}
+      </div>
     </div>
+    <Footer />
   </div>
 }
 
